@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  klika2c:
+    image: klikacc
+    ports:
+      - 8080:8080
+    environment:
+      - MYSQL_USER=user
+      - MYSQL_PASS=2021Mysql!!
+      - MYSQL_ADDRESS=172.17.0.1
+      - MYSQL_PORT=3306
