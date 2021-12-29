@@ -24,17 +24,18 @@ var (
 func main() {
 	app := fiber.New(fiber.Config{})
 
-	resultCh := make(chan error, 100)
+	doneCh := make(chan struct{}, 100)
 
 	pool := pkg.NewPool(100)
 
 	app.Get("/v1/movie", func(c *fiber.Ctx) error {
 		pool.Schedule(func() {
-			resultCh <- movieHandler.GetMovie(c)
+			movieHandler.GetMovie(c)
+			doneCh <- struct{}{}
 		})
+		<-doneCh
 
-		result := <-resultCh
-		return result
+		return nil
 	})
 
 	app.Listen(":8080")

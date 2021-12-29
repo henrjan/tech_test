@@ -43,8 +43,7 @@ func (handler *MovieHandler) GetMovie(c *fiber.Ctx) error {
 
 	urlPath := c.OriginalURL()
 	method := c.Method()
-
-	handler.accessSrv.InsertLog(urlPath, method, response)
+	go handler.accessSrv.InsertLog(urlPath, method, response)
 
 	return c.JSON(response)
 }
