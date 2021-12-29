@@ -15,10 +15,10 @@ import (
 var (
 	db           = initDB()
 	accessRepo   = repository.NewAccessRepository(db)
-	accessSrv    = service.NewAccessService(*accessRepo)
+	accessSrv    = service.NewAccessService(accessRepo)
 	movieDriver  = driver.NewMovieDriver()
 	movieSrv     = service.NewMovieService(movieDriver)
-	movieHandler = handler.NewMovieHandler(*movieSrv, *accessSrv)
+	movieHandler = handler.NewMovieHandler(movieSrv, accessSrv)
 )
 
 func main() {

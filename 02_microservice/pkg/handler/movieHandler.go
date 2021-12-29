@@ -8,11 +8,11 @@ import (
 )
 
 type MovieHandler struct {
-	movieSrv  service.MovieService
-	accessSrv service.AccessService
+	movieSrv  service.MovieSrv
+	accessSrv service.AccessSrv
 }
 
-func NewMovieHandler(movieSrv service.MovieService, accessSrv service.AccessService) *MovieHandler {
+func NewMovieHandler(movieSrv service.MovieSrv, accessSrv service.AccessSrv) *MovieHandler {
 	return &MovieHandler{movieSrv, accessSrv}
 }
 

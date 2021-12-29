@@ -15,10 +15,10 @@ type AccessSrv interface {
 }
 
 type AccessService struct {
-	repo repository.AccessRepository
+	repo repository.AccessRepo
 }
 
-func NewAccessService(repo repository.AccessRepository) *AccessService {
+func NewAccessService(repo repository.AccessRepo) *AccessService {
 	return &AccessService{repo}
 }
 
@@ -35,6 +35,8 @@ func (srv *AccessService) InsertLog(urlPath, method string, response map[string]
 		},
 	}
 
-	srv.repo.DBInsert(access)
+	if e := srv.repo.DBInsert(access); e != nil {
+		err = pkg.NewError("Internal Server Error", 500)
+	}
 	return
 }
