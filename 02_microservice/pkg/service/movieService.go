@@ -6,12 +6,16 @@ import (
 	"github.com/henrjan/microservice/pkg/entity"
 )
 
+type MovieSrv interface {
+	GetMovie(map[string]interface{}) ([]entity.Movie, *pkg.Errors)
+}
+
 type MovieService struct {
-	driver driver.MovieDriver
+	driver driver.MovieDrv
 	baseService
 }
 
-func NewMovieService(driver driver.MovieDriver) *MovieService {
+func NewMovieService(driver driver.MovieDrv) *MovieService {
 	baseService := New()
 	return &MovieService{driver, baseService}
 }

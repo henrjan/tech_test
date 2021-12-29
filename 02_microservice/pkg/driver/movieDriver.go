@@ -14,6 +14,10 @@ const (
 	apiKey  = "faf7e5bb"
 )
 
+type MovieDrv interface {
+	Get(string, string) (*entity.SearchMovie, error)
+}
+
 type MovieDriver struct {
 }
 

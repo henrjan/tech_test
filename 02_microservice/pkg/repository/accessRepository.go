@@ -5,6 +5,10 @@ import (
 	"gorm.io/gorm"
 )
 
+type AccessRepo interface {
+	DBInsert(entity.Entity) error
+}
+
 type AccessRepository struct {
 	baseRepository
 }

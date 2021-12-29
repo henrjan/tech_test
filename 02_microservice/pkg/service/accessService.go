@@ -10,6 +10,10 @@ import (
 	"github.com/henrjan/microservice/pkg/repository"
 )
 
+type AccessSrv interface {
+	InsertLog(string, string, map[string]interface{}) *pkg.Errors
+}
+
 type AccessService struct {
 	repo repository.AccessRepository
 }
