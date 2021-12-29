@@ -6,14 +6,12 @@ import (
 )
 
 const (
-	HASHKEY = "c5dda7a77f7dc8e29cd2d949ccc201c02e1afdd5d4a44993d2a81509d53c6954"
-
 	MYSQL_USER     = "user"
 	MYSQL_PASSWORD = "2021Mysql!!"
 	MYSQL_ADDRESS  = "172.17.0.1"
 	MYSQL_PORT     = "3306"
 
-	DB_NAME = "klikacc"
+	DB_NAME = "search_movie"
 )
 
 func GetMySqlDSN() (result string) {
