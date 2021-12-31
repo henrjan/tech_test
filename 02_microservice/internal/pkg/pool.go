@@ -1,7 +1,5 @@
 package pkg
 
-var Pools = NewPool(100)
-
 type Pool struct {
 	work chan func()
 	sem  chan struct{}

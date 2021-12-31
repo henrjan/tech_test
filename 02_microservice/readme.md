@@ -2,7 +2,8 @@
 
 ```
 update : so I decided to add gRPC and gRPC-gateway as v2, by default when running docker-compose v1 will be used.
-To use v2, you need to change "v1" on dockerfile to "v2".
+To use v2, you need to change "v1" on dockerfile to "v2" and bind ports :8081 on docker host to port :8081 on docker container.
+gRPC server use port :8080 and gRPC-gateway use port 8081.
 ```
 
 Before running the appliaction, you need to change configuration for Mysql at "docker-compose.yaml" file,
