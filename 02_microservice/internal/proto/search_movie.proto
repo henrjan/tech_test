@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+
+package search_movie;
+
+option go_package = "github.com/henrjan/proto";
+
+service SearchMovie {
+    rpc GetMovie(SearchRequest) returns (SearchResponse) {
+        option (google.api.http) = {
+            get: "/v1/movie"
+        };
+    }
+}
+
+message SearchRequest {
+    string search_word = 1;
+    string page = 2;
+}
+
+message SearchResponse {
+    repeated Movie result = 1;
+    string error = 4;
+}
+
+message Movie {
+    string title = 1;
+    string year = 2;
+    string imdbID = 3;
+    string type = 4;
+    string poster = 5;
+}
