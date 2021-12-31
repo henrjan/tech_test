@@ -5,7 +5,7 @@ import (
 	"github.com/henrjan/microservice/configs"
 	"github.com/henrjan/microservice/internal/pkg"
 	"github.com/henrjan/microservice/pkg/driver"
-	"github.com/henrjan/microservice/pkg/handler"
+	"github.com/henrjan/microservice/pkg/handler/v1"
 	"github.com/henrjan/microservice/pkg/repository"
 	"github.com/henrjan/microservice/pkg/service"
 	"gorm.io/driver/mysql"

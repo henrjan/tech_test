@@ -2,9 +2,7 @@ package service
 
 import (
 	"encoding/json"
-	"time"
 
-	"github.com/google/uuid"
 	"github.com/henrjan/microservice/internal/pkg"
 	"github.com/henrjan/microservice/pkg/entity"
 	"github.com/henrjan/microservice/pkg/repository"
@@ -29,11 +27,9 @@ func (srv *AccessService) InsertLog(urlPath, method string, response map[string]
 		Url:          urlPath,
 		Method:       method,
 		ResponseBody: string(res),
-		BaseEntity: entity.BaseEntity{
-			ID:        uuid.New().String(),
-			CreatedAt: time.Now().Format("2006-01-02 15:04:05"),
-		},
 	}
+	access.NewID()
+	access.SetCreated()
 
 	if e := srv.repo.DBInsert(access); e != nil {
 		err = pkg.NewError("Internal Server Error", 500)

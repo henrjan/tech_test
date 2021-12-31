@@ -1,6 +1,8 @@
 package entity
 
 import (
+	"time"
+
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 )
@@ -17,4 +19,8 @@ type BaseEntity struct {
 
 func (entity *BaseEntity) NewID() {
 	entity.ID = uuid.New().String()
+}
+
+func (entity *BaseEntity) SetCreated() {
+	entity.CreatedAt = time.Now().Format("2006-01-02 15:04:05")
 }
